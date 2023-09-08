@@ -1,0 +1,16 @@
+{% extends 'app/index.html' %}
+
+{% load static %}
+
+{% block title %}
+    proveedores
+{% endblock title %}
+
+{% block codigoDinamico %}
+    <h1>Mis proveedores son_:</h1>
+    {% for proveedores in proveedores %}
+        <p>{{proveedores.nombre}} {{proveedores.apellido}}, {{proveedores.telefono}}, queda en {{proveedores.direccion}}</p>
+
+{% endfor %}
+
+{% endblock %}

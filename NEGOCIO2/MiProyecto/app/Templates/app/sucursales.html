@@ -1,0 +1,18 @@
+{% extends 'app/index.html' %}
+
+{% load static %}
+
+{% block title %}
+    sucursales
+{% endblock title %}
+
+{% block codigoDinamico %}
+    <h1>Esta sucursal esta ubicada en :</h1>
+    {% for sucursales in sucursales %}
+        <p>{{sucursales.direccion}} {{sucursales.cuit}}, tiene {{sucursales.telefono}}, nacio el {{sucursales.instagram}}</p>
+
+{% endfor %}
+
+{% endblock %}
+
+

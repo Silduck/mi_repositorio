@@ -1,0 +1,17 @@
+{% extends 'app/index.html' %}
+
+{% load static %}
+
+{% block title %}
+    clientes
+{% endblock title %}
+
+{% block codigoDinamico %}
+    <h1>los clientes son :</h1>
+
+{% for clientes in clientes %}
+    {{clientes.nombre}} {{clientes.apellido}}, y su numero es{{clientes.telefono}}, queda en {{clientes.direccion}}
+
+{% endfor %}
+    
+{% endblock %}

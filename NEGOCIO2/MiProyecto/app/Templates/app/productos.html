@@ -1,0 +1,16 @@
+{% extends 'app/index.html' %}
+
+{% load static %}
+
+{% block title %}
+    productos
+{% endblock title %}
+
+{% block codigoDinamico %}
+    <h1>Mis productos son_:</h1>
+    {% for productos in productos %}
+        <p> codigo {{productos.articulo}}, {{productos.tipo}}, {{productos.estilo}}, en {{productos.color}}, numero {{productos.talle}}</p>
+
+{% endfor %}
+
+{% endblock %}
