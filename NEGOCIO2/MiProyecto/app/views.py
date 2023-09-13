@@ -10,7 +10,7 @@ from app.models import clientes
 
 from app.models import productos
 
-from.forms import RegistrarClienteForm, BuscarProductosForm
+from .forms import RegistrarClienteForm
 
 # Create your views here.
 
@@ -67,5 +67,26 @@ def mostrar_index(request):
 
 
     return render(request, 'app/home.html')
+
+def registrar_cliente(request):
+
+    if request.method == 'POST':
+
+        formulario = RegistrarClienteForm(request.POST)
+
+        if formulario.is_valid():
+
+            formulario_limpio = formulario.cleaned_data
+
+            cliente = clientes(nombre=formulario_limpio['nombre'], apellido=formulario_limpio['apellido'], telefono=formulario_limpio['telefono'], direccion=formulario_limpio['direccion'])
+
+            cliente.save()
+
+            return render(request, 'app/home.html')
+    else:
+            formulario = RegistrarClienteForm()
+
+    return render(request, 'app/registrar_cliente.html', {'formulario': RegistrarClienteForm})
+
 
 
