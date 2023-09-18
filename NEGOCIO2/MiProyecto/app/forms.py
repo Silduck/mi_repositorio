@@ -6,11 +6,11 @@ class RegistrarClienteForm(forms.Form):
     telefono = forms.IntegerField()
     direccion = forms.CharField(min_length=3, max_length=30)
 
-"""class BuscarProductosForm(forms.Form):
+class BuscarProductosForm(forms.Form):
     articulo = forms.IntegerField()
     tipo = forms.CharField(min_length=2,max_length=20)
     estilo = forms.CharField(min_length= 3,max_length=20)
     color = forms.CharField(min_length=3,max_length=15)
-    talle = forms.IntegerField ()"""
+    talle = forms.IntegerField ()
 
 

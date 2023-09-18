@@ -39,15 +39,14 @@
                         <li class="nav-item"><a class="nav-link" href={% url 'PersonalLocal' %}> PersonalLocal</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'Clientes' %}> Clientes</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'Registrar Cliente' %}> Registrar Cliente</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url 'Buscar Articulo' %}> Buscar Articulo</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
         <header class="masthead">
-            {%block codigoDinamico %}
-
-            {% endblock %}
+            
             <div class="container">
                 <div class="masthead-subheading">Welcome To Our Studio!</div>
                 <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
@@ -55,7 +54,10 @@
             </div>
         </header>
         <!-- Services-->
+        {%block codigoDinamico %}
+
         
+        {% endblock %}
         <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">

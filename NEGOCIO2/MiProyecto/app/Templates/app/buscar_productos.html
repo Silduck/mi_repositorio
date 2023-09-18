@@ -1,0 +1,30 @@
+{% extends 'app/index.html' %}
+
+{% load static %}
+
+{% block title %}
+  Buscar Productos
+{% endblock title %}
+
+{% block codigoDinamico %}
+<form action="" method="get">
+
+      <input type="text" name="articulo" id="articulo" placeholder="buscar articulo">
+
+      <input type="submit" value="Buscar">
+
+</form>
+
+{% if producto %}
+
+    <ul>
+    {% for productos in producto %}
+        <li>codigo {{productos.articulo}}, {{productos.tipo}}, {{productos.estilo}}, en {{productos.color}}, numero {{productos.talle}}</li>
+    {% endfor %}
+    </ul>
+
+{% else %}
+        <p>No hay datos</p>
+{% endif %}
+
+{% endblock %}

@@ -12,6 +12,8 @@ from app.models import productos
 
 from .forms import RegistrarClienteForm
 
+from .forms import BuscarProductosForm
+
 # Create your views here.
 
 
@@ -57,7 +59,7 @@ def mostrar_productos (request):
     pd1 = productos(articulo=1020, tipo='zapatilla',estilo= 'running', color='negro', talle=35) 
     pd2 = productos(articulo=1030, tipo='zapatilla',estilo= 'urbano', color='negro', talle=35) 
     pd3 = productos(articulo=1040, tipo='zapatilla',estilo= 'running', color='blanco', talle=35) 
-    pd4 = productos(articulo=1020, tipo='zapatilla',estilo= 'urbano', color='violeta', talle=35) 
+    pd4 = productos(articulo=1021, tipo='zapatilla',estilo= 'urbano', color='violeta', talle=35) 
 
 
     return render(request, 'app/productos.html',{'productos':[pd1,pd2,pd3,pd4]})
@@ -87,6 +89,17 @@ def registrar_cliente(request):
             formulario = RegistrarClienteForm()
 
     return render(request, 'app/registrar_cliente.html', {'formulario': RegistrarClienteForm})
+
+def buscar_articulo(request):
+
+    if request.GET.get('articulo', False):
+        articulo = request.GET['articulo']
+        producto = productos.objects.filter(articulo__icontains=articulo)
+
+        return render(request, 'app/buscar_productos.html', {'producto': producto})
+    else:
+        respuesta = 'No hay datos'
+    return render(request, 'app/buscar_productos.html', {'respuesta': respuesta})
 
 
 
