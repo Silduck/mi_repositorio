@@ -7,11 +7,15 @@
 {% endblock title %}
 
 {% block codigoDinamico %}
-    <h1>los clientes son :</h1>
+    <h1>Nuestros clientes son :</h1>
 
 {% for clientes in clientes %}
-    {{clientes.nombre}} {{clientes.apellido}}, y su numero es{{clientes.telefono}}, queda en {{clientes.direccion}}
+    . {{clientes.nombre}} {{clientes.apellido}}, TEL: {{clientes.telefono}}, domicilio: {{clientes.direccion}}
 
+</p>
+<button>
+    <a href={% url 'eliminar cliente' cliente_id=cliente.id %}> Eliminar</a></li>
+                    
 {% endfor %}
     
 {% endblock %}

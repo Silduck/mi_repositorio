@@ -7,10 +7,10 @@
 {% endblock title %}
 
 {% block codigoDinamico %}
-    <h1>Esta sucursal tiene este personal :</h1>
+    <h1>Personal de esta sucursal:</h1>
 
 {% for personalLocal in personalLocal %}
-    <p>{{personalLocal.nombre}} {{personalLocal.apellido}}, tiene {{personalLocal.edad}}, el telefono {{personalLocal.telefono}}</p>
+    <p>{{personalLocal.nombre}} {{personalLocal.apellido}}, edad: {{personalLocal.edad}}, telefono: {{personalLocal.telefono}}</p>
 {% endfor %}
 
 {% endblock %}
