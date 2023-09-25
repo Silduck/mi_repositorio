@@ -14,7 +14,8 @@ class personalLocal(models.Model):
     edad = models.IntegerField()
     telefono = models.DateField()
 
-class clientes(models.Model):
+class Clientes(models.Model):
+    id = models.CharField(primary_key=True, max_length=3)
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
     telefono = models.IntegerField()

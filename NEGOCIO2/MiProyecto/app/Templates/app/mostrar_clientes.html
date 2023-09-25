@@ -1,0 +1,25 @@
+    {% extends 'app/index.html' %}
+
+    {% load static %}
+
+    {% block title %}
+        clientes
+    {% endblock title %}
+
+    {% block codigoDinamico %}
+    <h1>Nuestros clientes son :</h1>
+        {% for cliente in clientes %}
+    <p>
+        
+        id: {{cliente.id}}
+        Nombre:{{cliente.nombre}}, Apellido: {{cliente.apellido}},
+        Telefono: {{cliente.telefono}}, Domicilio: {{cliente.direccion}}
+    </p>
+    <button>
+                <a href= "{% url 'eliminar cliente' cliente_id=cliente.id %}" >Eliminar</a>
+    </button>  
+    
+        
+{% endfor %}
+    
+{% endblock %}

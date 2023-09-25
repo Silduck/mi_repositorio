@@ -6,7 +6,7 @@ from app.models import proveedores
 
 from app.models import personalLocal
 
-from app.models import clientes
+from app.models import Clientes
 
 from app.models import productos
 
@@ -14,7 +14,7 @@ from .forms import RegistrarClienteForm
 
 from .forms import BuscarProductosForm
 
-# Create your views here.
+
 
 
 def mostrar_sucursales (request):
@@ -44,15 +44,46 @@ def mostrar_personalLocal (request):
 
     return render(request, 'app/personalLocal.html',{'personalLocal':[pl1,pl2,pl3,pl4]})
 
+def mostrar_index(request):
+    clienteslista =     Clientes.objects.all()
 
-def mostrar_clientes (request):
-    c1 = clientes(nombre='Diego', apellido='Daro',telefono= 1564592356, direccion='mariano acosta 111') 
-    c2 = clientes(nombre='Ignacio', apellido='Perez', telefono= 1566891235, direccion='rivadavia 4586') 
-    c3 = clientes(nombre='Laura', apellido='Martiniano', telefono= 1565517886, direccion='brown 85421') 
-    c4 = clientes(nombre='Ivanna', apellido='Gonzalez',telefono= 1556324589, direccion='av peron 8452') 
+    return render(request, "app/mostrar_clientes.html", {"clientes": clienteslista})
 
 
-    return render(request, 'app/clientes.html',{'clientes':[c1,c2,c3,c4]})
+
+
+#def mostrar_clientes(request):
+
+    cliente = clientes.objects.all()
+
+    context = {'clientes': clientes}
+
+    return render(request, 'app/mostrar_clientes.html', context=context)
+
+#def mostrar_clientes(request):
+    c1 = Clientes(nombre='Diego', apellido='Daro',telefono= 220458631, direccion='av.libertador 1568') 
+    c2 = Clientes(nombre='Ignacio', apellido='Perez', telefono= 1566891235, direccion='rivadavia 4586') 
+    c3 = Clientes(nombre='Laura', apellido='Martiniano', telefono= 1565517886, direccion='brown 85421') 
+    c4 = Clientes(nombre='Ivanna', apellido='Gonzalez',telefono= 1556324589, direccion='av peron 8452') 
+
+    return render(request, 'app/mostrar_clientes.html',{'clientes':[c1,c2,c3,c4]})
+
+
+
+def eliminar_cliente(request, cliente_id):
+
+    cliente = Clientes.objects.get(id=cliente_id)
+
+    cliente.delete() 
+
+    clientes = Clientes.objects.all()
+
+    context = {'clientes':clientes}
+
+    return render(request, 'app/mostrar_clientes.html', context=context)
+
+    
+
 
 
 def mostrar_productos (request):
@@ -64,7 +95,7 @@ def mostrar_productos (request):
 
     return render(request, 'app/productos.html',{'productos':[pd1,pd2,pd3,pd4]})
 
-def mostrar_index(request):
+#def mostrar_index(request):
 
 
 
@@ -80,7 +111,7 @@ def registrar_cliente(request):
 
             formulario_limpio = formulario.cleaned_data
 
-            cliente = clientes(nombre=formulario_limpio['nombre'], apellido=formulario_limpio['apellido'], telefono=formulario_limpio['telefono'], direccion=formulario_limpio['direccion'])
+            cliente = Clientes(nombre=formulario_limpio['nombre'], apellido=formulario_limpio['apellido'], telefono=formulario_limpio['telefono'], direccion=formulario_limpio['direccion'])
 
             cliente.save()
 
@@ -101,17 +132,6 @@ def buscar_articulo(request):
         respuesta = 'No hay datos'
     return render(request, 'app/buscar_productos.html', {'respuesta': respuesta})
 
-def eliminar_cliente(request, cliente_id):
-
-    cliente = cliente.objects.get(id-cliente_id)
-
-    cliente.delete() 
-
-    cliente = cliente.objects.all()
-
-    context = {'clientes':clientes}
-
-    return render(request, 'app/clientes.html', context=context)
 
 
 
