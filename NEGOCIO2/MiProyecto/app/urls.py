@@ -11,5 +11,6 @@ urlpatterns = [
     path('productos/', views.mostrar_productos, name='Productos'),
     path('registrar_cliente/', views.registrar_cliente, name='Registrar Cliente'),
     path('buscar_articulo/', views.buscar_articulo, name='Buscar Articulo'),
-    path('eliminar_cliente/<cliente_id>', views.eliminar_cliente, name= 'eliminar cliente')
-]
+    path('eliminar_cliente/<cliente_id>', views.eliminar_cliente, name= 'eliminar cliente'),
+    path('actualizar_cliente/<cliente_id>',views.actualizar_cliente, name= 'actualizar cliente'),
+    ]

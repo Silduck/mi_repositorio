@@ -82,7 +82,33 @@ def eliminar_cliente(request, cliente_id):
 
     return render(request, 'app/mostrar_clientes.html', context=context)
 
+def actualizar_cliente(request, cliente_id):
+
+    cliente = Clientes.objects.get(id=cliente_id)
     
+    if request.method == 'POST':
+        formulario = RegistrarClienteForm(request.POST)
+
+        if formulario.is_valid():
+
+            formulario_limpio = formulario.cleaned_data
+
+            cliente.nombre = formulario_limpio ['nombre']
+            cliente.apellido = formulario_limpio ['apellido']
+            cliente.telefono = formulario_limpio ['telefono']
+            cliente.direccion = formulario_limpio ['direccion']
+
+            cliente.save()
+
+            return render(request, 'app/home.html')
+        else:
+            formulario = RegistrarClienteForm(initial={'nombre': cliente.nombre, 'apellido': cliente.apellido, 
+                                                    'telefono': cliente.telefono, 'direccion': cliente.direccion})
+            
+    return render(request, 'app/actualizar_cliente.html',{'formulario': RegistrarClienteForm, 'cliente': cliente})
+                                        
+
+            
 
 
 
