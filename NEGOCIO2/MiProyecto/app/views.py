@@ -14,6 +14,10 @@ from .forms import RegistrarClienteForm
 
 from .forms import BuscarProductosForm
 
+from django.views.generic import ListView 
+
+from django.views.generic.detail import DetailView
+
 
 
 
@@ -157,6 +161,16 @@ def buscar_articulo(request):
     else:
         respuesta = 'No hay datos'
     return render(request, 'app/buscar_productos.html', {'respuesta': respuesta})
+
+class ProductosList(ListView):
+
+    model= Productos
+    template_name = 'app/productos_list.html'
+
+class ProductosDetailView(DetailView):
+
+    model = Productos
+    template_name = 'app/productos_detalle.html'
 
 
 
