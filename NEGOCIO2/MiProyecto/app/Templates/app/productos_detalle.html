@@ -1,0 +1,22 @@
+{%  extends 'app/index.html' %}
+
+{% load static %}
+
+{% block title %}
+    ver mas
+{% endblok title %}
+
+{% block codigoDinamico %}
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<h2> {{productos.articulo}}</h2>
+<h2> {{productos.tipo}}</h2>
+<h2> {{productos.estilo}}</h2>
+<h2> {{productos.color}}</h2>
+<h2> {{productos.talle}}</h2>
+
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    <button>
+        <a href="{% url 'List'%}">Regresar</a>
+    </button>
+
+{% endblock %}

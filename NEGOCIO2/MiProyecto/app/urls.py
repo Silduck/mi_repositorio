@@ -12,5 +12,11 @@ urlpatterns = [
     path('registrar_cliente/', views.registrar_cliente, name='Registrar Cliente'),
     path('buscar_articulo/', views.buscar_articulo, name='Buscar Articulo'),
     path('eliminar_cliente/<cliente_id>', views.eliminar_cliente, name= 'eliminar cliente'),
+    path('cliente_confirm_delete/<pk>', views.ClientesDeleteView.as_view(), name= 'Delete'),
     path('actualizar_cliente/<cliente_id>',views.actualizar_cliente, name= 'actualizar cliente'),
+    path('productos_list/', views.productosList.as_view(), name= 'List'),
+    path('productos_detail/<pk>', views.productosDetailView.as_view(), name= 'Detail'),
+    path('productos_confirm_delete/<pk>', views.productosDeleteView.as_view(), name= 'Delete'),
+    path('productos_edit/<pk>', views.productosUpdateView.as_view(), name= 'Update'),
+    path('productos_form/', views.productosCreateView.as_view(), name= 'Create'),
     ]

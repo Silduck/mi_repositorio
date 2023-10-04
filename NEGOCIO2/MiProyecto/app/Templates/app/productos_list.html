@@ -1,0 +1,44 @@
+{% extends 'app/index.html' %}
+
+{% load static %}
+
+{% block title %}
+    lista de calzados 
+{% endblock title %}
+
+{% block codigoDinamico %}
+{% for productos in objects_list %}
+
+<ul>
+    <li>
+        <h2>{{productos}} </h2>
+        <br>
+        <br>
+        <button>
+            <a href="{% url 'Detail' productos.id %}"> Ver Mas</a>
+        </button>
+
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        <button>
+            <a href="{% url 'Delete' productos.id %}"> Eliminar</a>  
+        </button>
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        <button>
+            <a href="{% url 'Update' productos.id %}"> Actualizar</a> 
+        </button>
+    
+    </li>
+</ul>
+
+{% endfor %}
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    <br>
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    <br>
+<button>
+    <a href="{% url 'Create' %}"> Agregar Producto </a> 
+</button>
+{% endblock %}
+
+
+

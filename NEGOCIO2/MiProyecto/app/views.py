@@ -18,6 +18,8 @@ from django.views.generic import ListView
 
 from django.views.generic.detail import DetailView
 
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 
 
 
@@ -162,15 +164,39 @@ def buscar_articulo(request):
         respuesta = 'No hay datos'
     return render(request, 'app/buscar_productos.html', {'respuesta': respuesta})
 
-class ProductosList(ListView):
+class productosList(ListView):
 
-    model= Productos
+    model= productos
     template_name = 'app/productos_list.html'
 
-class ProductosDetailView(DetailView):
+class productosCreateView(CreateView):
 
-    model = Productos
+    model = productos
+    success_url = '/productos_list'
+    fields = ['articulo', 'tipo', 'estilo', 'color', 'talle']
+
+class productosDetailView(DetailView):
+
+    model = productos
     template_name = 'app/productos_detalle.html'
+
+class productosDeleteView(DeleteView):
+
+    model = productos
+    success_url = '/productos_list'
+
+class productosUpdateView(UpdateView):
+
+    model = productos
+    success_url = '/productos_list'
+    fields = ['articulo', 'tipo', 'estilo', 'color', 'talle']
+
+
+class ClientesDeleteView(DeleteView):
+
+    model = Clientes
+    success_url = '/clientes_list'
+
 
 
 

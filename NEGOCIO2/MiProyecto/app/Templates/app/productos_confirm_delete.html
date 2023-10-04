@@ -1,0 +1,10 @@
+{% extends 'app/index.html' %}
+{% load static %}
+
+{% block codigoDinamico %}
+
+<form method= "post"> {% csrf_token %}
+    Estas seguro que desea eliminar el articulo {{object}}?
+    <input type="submit" value="Eliminar"
+</form>
+{% endblock %}
