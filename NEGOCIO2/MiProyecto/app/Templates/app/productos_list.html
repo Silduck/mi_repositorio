@@ -7,7 +7,7 @@
 {% endblock title %}
 
 {% block codigoDinamico %}
-{% for productos in objects_list %}
+{% for productos in object_list %}
 
 <ul>
     <li>
@@ -17,7 +17,6 @@
         <button>
             <a href="{% url 'Detail' productos.id %}"> Ver Mas</a>
         </button>
-
         &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
         <button>
             <a href="{% url 'Delete' productos.id %}"> Eliminar</a>  
@@ -29,7 +28,6 @@
     
     </li>
 </ul>
-
 {% endfor %}
 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
     <br>
@@ -37,6 +35,13 @@
     <br>
 <button>
     <a href="{% url 'Create' %}"> Agregar Producto </a> 
+</button>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    <br>
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    <br>
+<button>
+    <a href="{% url 'Buscar Articulo' %}"> Buscar Articulo </a> 
 </button>
 {% endblock %}
 
