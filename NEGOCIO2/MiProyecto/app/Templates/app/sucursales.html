@@ -7,7 +7,7 @@
 {% endblock title %}
 
 {% block codigoDinamico %}
-    <h1>Esta sucursal esta ubicada en :</h1>
+    <h1>Nuestras sucursales son:</h1>
     {% for sucursales in sucursales %}
         <p>{{sucursales.direccion}} cuit: {{sucursales.cuit}} telefono: {{sucursales.telefono}}, instagram: {{sucursales.instagram}}, localidad: {{sucursales.localidad}}</p>
 

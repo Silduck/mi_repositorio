@@ -8,12 +8,13 @@
 
 {% block codigoDinamico %}
 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-<h2> {{productos.articulo}}</h2>
-<h2> {{productos.tipo}}</h2>
-<h2> {{productos.estilo}}</h2>
-<h2> {{productos.color}}</h2>
-<h2> {{productos.talle}}</h2>
-
+<h2> articulo {{productos.articulo}}</h2>
+<h2> tipo {{productos.tipo}}</h2>
+<h2> estilo {{productos.estilo}}</h2>
+<h2> color {{productos.color}}</h2>
+<h2> precio {{productos.precio}} pesos</h2>
+<h5> descripcion: Confeccionadas con materiales sintéticos y un exterior textil respirable y con una mediasuela suave y elástica, más una suela de goma que te brinda el agarre y la amortiguación que necesitas en cada paso. 
+    Combinalas con tus outfits deportivos y da tu máximo potencial en cada rutina.</h5>
 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
     <button>
         <a href="{% url 'List'%}">Regresar</a>

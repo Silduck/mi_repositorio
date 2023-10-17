@@ -16,15 +16,14 @@
         Telefono: {{cliente.telefono}}, Domicilio: {{cliente.direccion}}
     </p>
     <button>
-                <a href= "{% url 'eliminar cliente' cliente_id=cliente.id %}" >Eliminar</a>
+        <a href="{% url 'eliminar cliente' cliente_id=cliente.id %}">Eliminar</a>
     </button>
-
-    &nbsp &nbsp &nbsp &nbsp &nbsp
-
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
     <button>
-                <a href= "{% url 'actualizar cliente' cliente_id=cliente.id %}" >Actualizar</a>
+        <a href= "{% url 'actualizar cliente' cliente_id=cliente.id %}" >Actualizar</a>
     </button>
         
 {% endfor %}
+
     
 {% endblock %}

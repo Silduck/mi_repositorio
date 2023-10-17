@@ -4,7 +4,7 @@
 {% block codigoDinamico %}
 
 <form method= "post"> {% csrf_token %}
-    Estas seguro que desea eliminar este cliente {{Clientes.object}}?
+    Estas seguro que desea eliminar este cliente {{object}}?
     <input type="submit" value="Eliminar"
 </form>
 {% endblock %}

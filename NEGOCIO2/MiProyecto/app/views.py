@@ -1,14 +1,14 @@
 from django.shortcuts import render
 
-from app.models import sucursales 
+from app.models import Sucursales 
 
-from app.models import proveedores
+from app.models import Proveedores
 
-from app.models import personalLocal
+from app.models import Personal
 
-from app.models import Clientes
+from app.models import Cliente
 
-from app.models import productos
+from app.models import Productos
 
 from .forms import RegistrarClienteForm
 
@@ -20,37 +20,39 @@ from django.views.generic.detail import DetailView
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
+from .forms import BuscarTipoForm
+
 
 
 
 def mostrar_sucursales (request):
-    s1 = sucursales(direccion='Hipolito Yrigoyen 1325', cuit=2569874521036, telefono=2204836985, instagram= '@calzadoslospatos', localidad='Merlo')
-    s2 = sucursales(direccion='av.LIbertador 196', cuit=305896321, telefono=2203058963, instagram= '@calzadoslospatos', localidad='Merlo') 
-    s3 = sucursales(direccion='Perón 1157', cuit=32213554654, telefono=2205454445, instagram= '@calzadoslospatos',localidad='Moron') 
+    s1 = Sucursales(direccion='Hipolito Yrigoyen 1325', cuit=2569874521036, telefono=2204836985, instagram= '@calzadoslospatos', localidad='Merlo norte')
+    s2 = Sucursales(direccion='av.LIbertador 196', cuit=305896321, telefono=2203058963, instagram= '@calzadoslospatos', localidad='Merlo centro') 
+    s3 = Sucursales(direccion='Perón 1157', cuit=32213554654, telefono=2205454445, instagram= '@calzadoslospatos',localidad='Moron') 
 
 
     return render(request, 'app/sucursales.html',{'sucursales':[s1,s2,s3]})
 
 
 def mostrar_proveedores (request):
-    p1 = proveedores(nombre='Santiago', apellido='Cardozo', telefono=4568389, direccion= 'Sullivan 489') 
-    p2 = proveedores(nombre='juan', apellido='Perez', telefono=4987329, direccion= 'Avellaneda 4089')
-    p3 = proveedores(nombre='Gustavo', apellido='Capdevila', telefono=2204867899, direccion= 'Guardia vieja 1980')
-    p4 = proveedores(nombre='Horacio', apellido='Lopez', telefono=3956589, direccion= 'Uruguay 489')
+    p1 = Proveedores(nombre='Santiago', apellido='Cardozo', telefono=4568389, direccion= 'Sullivan 489') 
+    p2 = Proveedores(nombre='Juan', apellido='Perez', telefono=4987329, direccion= 'Avellaneda 4089')
+    p3 = Proveedores(nombre='Gustavo', apellido='Capdevila', telefono=2204867899, direccion= 'Guardia vieja 1980')
+    p4 = Proveedores(nombre='Horacio', apellido='Lopez', telefono=3956589, direccion= 'Uruguay 489')
 
 
     return render(request, 'app/proveedores.html',{'proveedores':[p1,p2,p3,p4]})
 
 def mostrar_personalLocal (request):
-    pl1 = personalLocal(nombre='Diego', apellido='Daro', edad=45, telefono= 1164592356) 
-    pl2 = personalLocal(nombre='Ignacio', apellido='Perez', edad=54, telefono= 1166891235) 
-    pl3 = personalLocal(nombre='Laura', apellido='Martiniano', edad=25, telefono= 1165517886) 
-    pl4 = personalLocal(nombre='Ivanna', apellido='Gonzalez', edad=35, telefono= 1156324589) 
+    pl1 = Personal(nombre='Diego', apellido='Daro', edad=45, telefono= 1164592356) 
+    pl2 = Personal(nombre='Ignacio', apellido='Perez', edad=54, telefono= 1166891235) 
+    pl3 = Personal(nombre='Laura', apellido='Martiniano', edad=25, telefono= 1165517886) 
+    pl4 = Personal(nombre='Ivanna', apellido='Gonzalez', edad=35, telefono= 1156324589) 
 
 
     return render(request, 'app/personalLocal.html',{'personalLocal':[pl1,pl2,pl3,pl4]})
 
-def mostrar_index(request):
+#def mostrar_clientes(request):
     clienteslista =     Clientes.objects.all()
 
     return render(request, "app/mostrar_clientes.html", {"clientes": clienteslista})
@@ -58,9 +60,9 @@ def mostrar_index(request):
 
 
 
-#def mostrar_clientes(request):
+def mostrar_clientes(request):
 
-    cliente = clientes.objects.all()
+    clientes = Cliente.objects.all()
 
     context = {'clientes': clientes}
 
@@ -78,11 +80,11 @@ def mostrar_index(request):
 
 def eliminar_cliente(request, cliente_id):
 
-    cliente = Clientes.objects.get(id=cliente_id)
+    cliente = Cliente.objects.get(id=cliente_id)
 
     cliente.delete() 
 
-    clientes = Clientes.objects.all()
+    clientes = Cliente.objects.all()
 
     context = {'clientes':clientes}
 
@@ -90,7 +92,7 @@ def eliminar_cliente(request, cliente_id):
 
 def actualizar_cliente(request, cliente_id):
 
-    cliente = Clientes.objects.get(id=cliente_id)
+    cliente = Cliente.objects.get(id=cliente_id)
     
     if request.method == 'POST':
         formulario = RegistrarClienteForm(request.POST)
@@ -119,15 +121,15 @@ def actualizar_cliente(request, cliente_id):
 
 
 def mostrar_productos (request):
-    pd1 = productos(articulo=1020, tipo='zapatilla',estilo= 'running', color='negro', talle=35) 
-    pd2 = productos(articulo=1030, tipo='zapatilla',estilo= 'urbano', color='negro', talle=35) 
-    pd3 = productos(articulo=1040, tipo='zapatilla',estilo= 'running', color='blanco', talle=35) 
-    pd4 = productos(articulo=1021, tipo='zapatilla',estilo= 'urbano', color='violeta', talle=35) 
+    pd1 = Productos(articulo=1020, tipo='zapatilla',estilo= 'running', color='negro', precio=30299) 
+    pd2 = Productos(articulo=1030, tipo='zapatilla',estilo= 'urbano', color='negro', precio=30349) 
+    pd3 = Productos(articulo=1040, tipo='zapatilla',estilo= 'running', color='blanco', precio=35049) 
+    pd4 = Productos(articulo=1021, tipo='zapatilla',estilo= 'urbano', color='violeta', precio=32399) 
 
 
     return render(request, 'app/productos.html',{'productos':[pd1,pd2,pd3,pd4]})
 
-#def mostrar_index(request):
+def mostrar_index(request):
 
 
 
@@ -143,7 +145,7 @@ def registrar_cliente(request):
 
             formulario_limpio = formulario.cleaned_data
 
-            cliente = Clientes(nombre=formulario_limpio['nombre'], apellido=formulario_limpio['apellido'], telefono=formulario_limpio['telefono'], direccion=formulario_limpio['direccion'])
+            cliente = Cliente(nombre=formulario_limpio['nombre'], apellido=formulario_limpio['apellido'], telefono=formulario_limpio['telefono'], direccion=formulario_limpio['direccion'])
 
             cliente.save()
 
@@ -157,7 +159,7 @@ def buscar_articulo(request):
 
     if request.GET.get('articulo', False):
         articulo = request.GET['articulo']
-        producto = productos.objects.filter(articulo__icontains=articulo)
+        producto = Productos.objects.filter(articulo__icontains=articulo)
 
         return render(request, 'app/buscar_productos.html', {'producto': producto})
     else:
@@ -166,36 +168,48 @@ def buscar_articulo(request):
 
 class productosList(ListView):
 
-    model= productos
+    model= Productos
     template_name = 'app/productos_list.html'
 
 class productosCreateView(CreateView):
 
-    model = productos
+    model = Productos
     success_url = '/productos_list'
-    fields = ['articulo', 'tipo', 'estilo', 'color', 'talle']
+    fields = ['articulo', 'tipo', 'estilo', 'color', 'precio']
 
 class productosDetailView(DetailView):
 
-    model = productos
+    model = Productos
     template_name = 'app/productos_detalle.html'
 
 class productosDeleteView(DeleteView):
 
-    model = productos
+    model = Productos
     success_url = '/productos_list'
 
 class productosUpdateView(UpdateView):
 
-    model = productos
+    model = Productos
     success_url = '/productos_list'
-    fields = ['articulo', 'tipo', 'estilo', 'color', 'talle']
+    fields = ['articulo', 'tipo', 'estilo', 'color', 'precio']
 
 
 class ClientesDeleteView(DeleteView):
 
-    model = Clientes
+    model = Cliente
     success_url = '/clientes_list'
+
+
+def buscar_tipo(request):
+    if request.GET.get('tipo', False):
+        tipo = request.GET['tipo']
+        producto = Productos.objects.filter(tipo__icontains=tipo)
+
+        return render(request, 'app/buscar_tipo.html', {'producto': producto})
+    else:
+        respuesta = 'No hay datos'
+    return render(request, 'app/buscar_tipo.html', {'respuesta': respuesta})
+
 
 
 

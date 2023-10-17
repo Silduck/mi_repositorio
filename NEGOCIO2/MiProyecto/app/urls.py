@@ -4,8 +4,8 @@ from app import views
 
 urlpatterns = [
     path('', views.mostrar_index, name='Inicio'),
-    path('mostrar_clientes/', views.mostrar_index, name='Clientes'),
-    path('personalLocal/', views.mostrar_personalLocal, name='PersonalLocal'),
+    path('mostrar_clientes/', views.mostrar_clientes, name='Cliente'),
+    path('personalLocal/', views.mostrar_personalLocal, name='Personal'),
     path('proveedores/', views.mostrar_proveedores, name='Proveedores'),	
     path('sucursales/', views.mostrar_sucursales, name='Sucursales'),
     path('productos/', views.mostrar_productos, name='Productos'),
@@ -19,4 +19,5 @@ urlpatterns = [
     path('productos_confirm_delete/<pk>', views.productosDeleteView.as_view(), name= 'Delete'),
     path('productos_edit/<pk>', views.productosUpdateView.as_view(), name= 'Update'),
     path('productos_form/', views.productosCreateView.as_view(), name= 'Create'),
+    path('buscar_tipo/', views.buscar_tipo, name= 'Buscar Tipo'),
     ]

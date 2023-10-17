@@ -11,6 +11,13 @@ class BuscarProductosForm(forms.Form):
     tipo = forms.CharField(min_length=2,max_length=20)
     estilo = forms.CharField(min_length= 3,max_length=20)
     color = forms.CharField(min_length=3,max_length=15)
-    talle = forms.IntegerField ()
+    precio = forms.IntegerField()
+
+class BuscarTipoForm(forms.Form):
+    articulo = forms.IntegerField()
+    tipo = forms.CharField(min_length=3, max_length=15)
+    estilo = forms.CharField(min_length=3, max_length=15)
+    color = forms.CharField(min_length=2, max_length=15)
+    precio = forms.IntegerField()
 
 

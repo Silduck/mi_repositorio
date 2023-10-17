@@ -2,20 +2,19 @@ from django.db import models
 
 # Create your models here.
 
-class proveedores(models.Model):
+class Proveedores(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
     telefono = models.IntegerField()
     direccion = models.CharField(max_length=50)
 
-class personalLocal(models.Model):
+class Personal(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
     edad = models.IntegerField()
     telefono = models.DateField()
 
-class Clientes(models.Model):
-    id = models.CharField(primary_key=True, max_length=3)
+class Cliente(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
     telefono = models.IntegerField()
@@ -25,11 +24,7 @@ class Clientes(models.Model):
         return f'Nombre: {self.nombre}, Apellido: {self.apellido}, Telefono: {self.telefono}, Direccion: {self.direccion}'
 
 
-#class localidad(models.Model):
- #   nombre = models.CharField(max_length=40)
-
-
-class sucursales(models.Model):
+class Sucursales(models.Model):
     direccion = models.CharField(max_length=40)
     cuit = models.IntegerField()
     telefono = models.IntegerField()
@@ -39,13 +34,13 @@ class sucursales(models.Model):
     def __str__(self):
         return f'Direccion: {self.direccion}, Cuit: {self.cuit}, Telefono: {self.telefono}, Instagram: {self.instagram}, Localidad: {self.localidad}'
 
-class productos(models.Model):
+class Productos(models.Model):
     articulo = models.IntegerField()
     tipo = models.CharField(max_length=20)
     estilo = models.CharField(max_length=20)
     color = models.CharField(max_length=15)
-    talle = models.IntegerField ()
+    precio = models.IntegerField()
 
     def __str__(self):
-        return f'Articulo: {self.articulo}, Tipo: {self.tipo}, Estilo: {self.estilo}, Color: {self.color}, Talle: {self.talle}'
+        return f'Articulo: {self.articulo}, Tipo: {self.tipo}, Estilo: {self.estilo}, Color: {self.color}, Precio: {self.precio}'
 
