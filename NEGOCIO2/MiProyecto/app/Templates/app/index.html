@@ -34,15 +34,20 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href={% url 'Inicio' %}> Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url 'Register' %}> Register</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href={% url 'Logout' %}> Logout</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'Sucursales' %}> Sucursales</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'Proveedores' %}> Proveedores</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'Personal' %}> Personal</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'Cliente' %}> Clientes</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'Registrar Cliente' %}> Registrar Cliente</a></li>
-                        <li class="nav-item"><a class="nav-link" href={% url 'Buscar Articulo' %}> Buscar Articulo</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'Productos' %}> Productos</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'List' %}> Lista de Productos</a></li>
-                        <li class="nav-item"><a class="nav-link" href={% url 'Buscar Tipo' %}> Buscar Tipo</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url 'Buscar Tipo' %}> Buscar Calzado</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href={% url 'Login' %}> Login</a></li>
+                        {% endif %}
                     
                     </ul>
                 </div>
@@ -54,6 +59,11 @@
             <div class="container">
                 <div class="masthead-subheading">Tu mejor opcion en precio y calidad!</div>
                 <div class="masthead-heading text-uppercase">Bienvenido a calzados los patos</div>
+                {% if request.user.is_authenticated %}
+                <h1 class="mb-5">Hola {{user.username}} que deseas hacer hoy?</h1>
+                {% else %}
+                    <h1 class="mb-5">hola invitado</h1>
+                {% endif %}
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
             </div>
         </header>

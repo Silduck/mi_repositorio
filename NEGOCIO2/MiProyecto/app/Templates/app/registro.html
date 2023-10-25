@@ -3,19 +3,18 @@
 {% load static %}
 
 {% block title %}
-    Login Acceso
+    Registro
 {% endblock title %}
 
-
 {% block codigoDinamico %}
-
-<form action="" method="post">{%csrf_token%}
-    <h3>Acceso necesario</h3>
+<form action="" method="post">{% csrf_token %}
+    <h3>Registro necesario</h3>
     <br>
     <table>
         {{form.as_p}}
     </table>
-    <button type="submit"> Iniciar Sesion</button>
+    <button type="submit">Registro</button>
 
 </form>
+
 {% endblock %}

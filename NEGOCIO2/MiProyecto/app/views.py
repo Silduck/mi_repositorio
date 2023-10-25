@@ -10,7 +10,7 @@ from app.models import Cliente
 
 from app.models import Productos
 
-from .forms import RegistrarClienteForm
+from .forms import RegistrarClienteForm, UserRegisterForm
 
 from .forms import BuscarProductosForm
 
@@ -22,6 +22,15 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .forms import BuscarTipoForm
 
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+
+from django.contrib.auth import login, logout, authenticate
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from django.contrib.auth.decorators import login_required 
+
+from django.contrib.auth.views import LogoutView
 
 
 
@@ -128,7 +137,7 @@ def mostrar_productos (request):
 
 
     return render(request, 'app/productos.html',{'productos':[pd1,pd2,pd3,pd4]})
-
+@login_required
 def mostrar_index(request):
 
 
@@ -166,7 +175,7 @@ def buscar_articulo(request):
         respuesta = 'No hay datos'
     return render(request, 'app/buscar_productos.html', {'respuesta': respuesta})
 
-class productosList(ListView):
+class productosList(LoginRequiredMixin, ListView):
 
     model= Productos
     template_name = 'app/productos_list.html'
@@ -177,17 +186,17 @@ class productosCreateView(CreateView):
     success_url = '/productos_list'
     fields = ['articulo', 'tipo', 'estilo', 'color', 'precio']
 
-class productosDetailView(DetailView):
+class productosDetailView(LoginRequiredMixin, DetailView):
 
     model = Productos
     template_name = 'app/productos_detalle.html'
 
-class productosDeleteView(DeleteView):
+class productosDeleteView(LoginRequiredMixin, DeleteView):
 
     model = Productos
     success_url = '/productos_list'
 
-class productosUpdateView(UpdateView):
+class productosUpdateView(LoginRequiredMixin, UpdateView):
 
     model = Productos
     success_url = '/productos_list'
@@ -198,6 +207,9 @@ class ClientesDeleteView(DeleteView):
 
     model = Cliente
     success_url = '/clientes_list'
+
+class AdminLogoutView(LogoutView):
+    template_name = 'app/logout.html'
 
 
 def buscar_tipo(request):
@@ -210,6 +222,46 @@ def buscar_tipo(request):
         respuesta = 'No hay datos'
     return render(request, 'app/buscar_tipo.html', {'respuesta': respuesta})
 
+def login_request(request):
+
+    if request.method == "POST":
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contraseña = form.cleaned_data.get('password')
+
+            user = authenticate(username=usuario, password=contraseña)
+
+            if user is not None:
+                login(request, user)
+
+                return render(request,'app/home.html', {"mensaje":f"Bienvenido {usuario}"})
+            else:
+                return render(request, 'app/home.html', {"mensaje":"Error,datos incorrectos"})
+            
+        else:
+            return render(request,'app/home.html', {"mensaje":"Error,formulario erroneo"})
+    form = AuthenticationForm()
+
+    return render(request, 'app/login.html', {'form':form})
+
+def register(request):
+
+    if request.method == 'POST':
+
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request, 'app/home.html', {"mensaje":"usuario creado"})
+        else:
+                form = UserCreationForm()
+        return render(request, 'app/registro.html', {"form":form})
+    
+    
 
 
 

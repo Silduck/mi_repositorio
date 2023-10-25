@@ -20,4 +20,7 @@ urlpatterns = [
     path('productos_edit/<pk>', views.productosUpdateView.as_view(), name= 'Update'),
     path('productos_form/', views.productosCreateView.as_view(), name= 'Create'),
     path('buscar_tipo/', views.buscar_tipo, name= 'Buscar Tipo'),
+    path('login/', views.login_request, name= 'Login'),
+    path('register/', views.register, name = 'Register'),
+    path('logout/', views.LogoutView.as_view(template_name='app/logout.html'), name = 'Logout'),
     ]
