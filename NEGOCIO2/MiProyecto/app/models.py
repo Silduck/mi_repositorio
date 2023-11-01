@@ -44,3 +44,11 @@ class Productos(models.Model):
     def __str__(self):
         return f'Articulo: {self.articulo}, Tipo: {self.tipo}, Estilo: {self.estilo}, Color: {self.color}, Precio: {self.precio}'
 
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=20)
+    email = models.EmailField(max_length=30)
+    telefono = models.IntegerField()
+    mensaje = models.CharField(max_length=350)
+
+    def __str__(self):
+        return f'Nombre: {self.nombre}, Email: {self.email}, Telefono: {self.telefono}, Mensaje: {self.mensaje}'     

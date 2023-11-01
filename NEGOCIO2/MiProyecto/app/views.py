@@ -10,7 +10,9 @@ from app.models import Cliente
 
 from app.models import Productos
 
-from .forms import RegistrarClienteForm, UserRegisterForm
+from app.models import Contacto
+
+from .forms import RegistrarClienteForm, UserRegisterForm, ContactoForm
 
 from .forms import BuscarProductosForm
 
@@ -261,6 +263,25 @@ def register(request):
                 form = UserCreationForm()
         return render(request, 'app/registro.html', {"form":form})
     
+def contactenos(request):
+
+    if request.method == 'POST':
+
+        formulario = ContactoForm(request.POST)
+
+        if formulario.is_valid():
+
+            formulario_limpio = formulario.cleaned_data
+
+            consulta = Contacto(nombre=formulario_limpio['nombre'], email=formulario_limpio['email'], telefono=formulario_limpio['telefono'], mensaje=formulario_limpio['mensaje'])
+
+            consulta.save()
+
+            return render(request, 'app/home.html')
+    else:
+            formulario = ContactoForm()
+
+    return render(request, 'app/contactanos.html', {'formulario': ContactoForm})
     
 
 

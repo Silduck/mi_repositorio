@@ -1,0 +1,21 @@
+{% extends 'app/index.html' %} 
+
+{% load static %}
+
+{% block title %}
+    Contáctenos 
+{% endblock title %}
+
+{% block codigoDinamico %}
+
+<form action="" method="post"> {% csrf_token %} 
+
+    <h3>Contáctenos</h3>
+    <table>
+        {{formulario.as_table}}
+    </table>
+
+    <button type="submit" value="Enviar">Enviar consulta</button>
+
+</form>
+{% endblock %}

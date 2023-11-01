@@ -36,3 +36,11 @@ class Meta:
     help_texts = {k:"" for k in fields}
 
 
+class ContactoForm(forms.Form):
+    nombre = forms.CharField(min_length=3, max_length=15)
+    email = forms.EmailField()
+    telefono = forms.IntegerField()
+    mensaje = forms.CharField(min_length=6, max_length=350)
+
+
+
