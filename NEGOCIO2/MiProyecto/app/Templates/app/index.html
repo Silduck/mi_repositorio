@@ -35,6 +35,7 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href={% url 'Inicio' %}> Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'Register' %}> Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url 'bloghome' %}> Blog</a></li>
                         {% if request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href={% url 'Logout' %}> Logout</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'Sucursales' %}> Sucursales</a></li>
