@@ -282,6 +282,10 @@ def contactenos(request):
             formulario = ContactoForm()
 
     return render(request, 'app/contactanos.html', {'formulario': ContactoForm})
+
+def about(request):
+
+    return render(request, 'app/nosotros.html')
     
 
 
