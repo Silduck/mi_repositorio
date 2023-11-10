@@ -210,8 +210,15 @@ class ClientesDeleteView(DeleteView):
     model = Cliente
     success_url = '/clientes_list'
 
-class AdminLogoutView(LogoutView):
-    template_name = 'app/logout.html'
+#class AdminLogoutView(LogoutView):
+    
+    #template_name = 'app/logout.html'
+
+def logout(request):
+    
+    return render(request,'app/logout.html')
+    
+
 
 
 def buscar_tipo(request):
@@ -258,10 +265,10 @@ def register(request):
 
             username = form.cleaned_data['username']
             form.save()
-            return render(request, 'app/home.html', {"mensaje":"usuario creado"})
-        else:
+            return render(request, 'app/home.html', {"mensaje":f"usuario creado"})
+    else:
                 form = UserCreationForm()
-        return render(request, 'app/registro.html', {"form":form})
+    return render(request, 'app/registro.html', {"form":form})
     
 def contactenos(request):
 
