@@ -22,17 +22,19 @@ from django.views.generic.detail import DetailView
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .forms import BuscarTipoForm
+from .forms import BuscarTipoForm, SignUpForm
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, authenticate
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.decorators import login_required 
 
 from django.contrib.auth.views import LogoutView
+
+from django.urls import reverse_lazy
 
 
 
@@ -210,13 +212,23 @@ class ClientesDeleteView(DeleteView):
     model = Cliente
     success_url = '/clientes_list'
 
-#class AdminLogoutView(LogoutView):
-    
-    #template_name = 'app/logout.html'
 
-def logout(request):
+class SignUpView(CreateView):
+
+    form_class = SignUpForm
+    success_url = reverse_lazy('Home')
+    template_name = 'app/registro.html'
+
+
+class AdminLogoutView(LogoutView):
     
-    return render(request,'app/logout.html')
+    template_name = 'app/logout.html'
+
+
+
+
+    
+    
     
 
 

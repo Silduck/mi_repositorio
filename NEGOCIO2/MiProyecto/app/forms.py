@@ -42,5 +42,15 @@ class ContactoForm(forms.Form):
     telefono = forms.IntegerField()
     mensaje = forms.CharField(min_length=3, max_length=350)
 
+class SignUpForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'email',
+            'password1',
+            'password2'
+        ]
+
 
 
