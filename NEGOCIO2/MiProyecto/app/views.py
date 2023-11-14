@@ -216,7 +216,7 @@ class ClientesDeleteView(DeleteView):
 class SignUpView(CreateView):
 
     form_class = SignUpForm
-    success_url = reverse_lazy('Home')
+    success_url = reverse_lazy('Inicio')
     template_name = 'app/registro.html'
 
 
