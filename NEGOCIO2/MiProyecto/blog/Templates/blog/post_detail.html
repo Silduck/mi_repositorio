@@ -17,12 +17,12 @@
         {% for comment in comments %}
         <div class="comments" style="padding: 10px;">
           <p class="font-weight-bold"> 
-           {{ comment.name }}
+           {{ comment.nombre }}
             <span class=" text-muted font-weight-normal">
               {{ comment.created_on }}
             </span>
           </p>
-          {{ comment.body | linebreaks }}
+          {{ comment.mensaje | linebreaks }}
         </div>
         {% endfor %}
       </div> 
@@ -34,7 +34,7 @@
           Tu comentario esta pendiente de aprobacion
         </div>
         {% else %}
-        <h3>Deja un comentario</h3>
+        <h3>Escribe un comentario</h3>
         <form method="post" style="margin-top: 1.3em;">
           {{ comment_form.as_p }}
           {% csrf_token %}

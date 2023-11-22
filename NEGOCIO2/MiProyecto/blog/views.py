@@ -28,7 +28,7 @@ def lista_de_posts(request):
 
 
 
-from django.shortcuts import render, get_object_or_404
+
 
 def post_detail(request, slug):
     template_name = 'blog/post_detail.html'
