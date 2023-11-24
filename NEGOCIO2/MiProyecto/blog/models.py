@@ -30,7 +30,7 @@ class Comment(models.Model):
     mensaje = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=False)
-
+    imagen = models.ImageField(upload_to= 'imagenes/', null= True, blank=True) 
     class Meta:
         ordering = ['created_on']
 
