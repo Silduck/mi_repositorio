@@ -1,6 +1,6 @@
 <strong><h1>PROYECTO FINAL-SILVANA ROJAS</h1></strong> <br>
 
-Proyecto de desarrollo de app web "Calzados Los Patos".Sito web dinámico destinado a ventas de calzados.<br>
+Proyecto de desarrollo de app web "<em>Calzados Los Patos</em>".Sito web dinámico destinado a ventas de calzados.<br>
 
 Proyecto Final en curso de programación <em>back-end</em> del centro de formacion laboral n°406 (cfl406),Morón.
 Desarrollé una aplicación web estilo blog programada en Python en Django. Esta web será dinámica e interactiva tendrá admin, perfiles, registro, páginas y formularios.
