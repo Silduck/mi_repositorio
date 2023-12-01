@@ -1,4 +1,6 @@
-{% block sidebar %}
+    {% block sidebar %}
+    
+    {% load static %}
 
 <style>
         .card{
@@ -15,9 +17,9 @@
         <p class="card-text"> Este es un blog creado con django haz click para ver el tutorial..!</p>
         <a href="https://djangocentral.com/building-a-blog-application-with-django"
             class="btn btn-danger">Saber mas!</a>
-        <img src="../imagenes/elongando.jpg" width="300" height="300">
+            <img src="{% static 'app/assets/zapatillasvoleyasics.jpg' %}" width="200" height="200">
     </div>
 </div>
 </div>
 
-{% endblock sidebar %}
+    {% endblock sidebar %}
